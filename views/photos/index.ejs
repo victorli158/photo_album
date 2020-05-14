@@ -41,12 +41,6 @@
           <a href="<%= cloudinary.url(photo.image.public_id)%>" target="_blank">
             <%-cloudinary.image(photo.image.public_id, {width: 150, height: 150, quality: 80, format:'jpg', class:'thumbnail inline'})%>
           </a>
-          <a href="<%= cloudinary.url(photo.image.public_id)%>" target="_blank">
-            <%-cloudinary.image(photo.image.public_id, {transformation: [{width: 150, height: 150}, {overlay: {url: "http://cloudinary.com/images/old_logo.png7"}}]})%>
-          </a>
-          <a href="<%= cloudinary.url(photo.image.public_id)%>" target="_blank">
-            <%-cloudinary.image(photo.image.public_id, {transformation: [{width: 150, height: 150}, {effect: "saturation:50"}]})%>
-          </a>
 
           <div class="less_info">
             <a href="#" class="toggle_info">Show transformations</a>
@@ -56,6 +50,9 @@
             <a href="#" class="toggle_info">Hide transformations</a>
             <table class="thumbnails">
               <% var transformations = [
+                { height : 150, width : 150, effect: "saturation:50" },
+                { height : 150, width : 150, overlay : {
+                  url : "https://res.cloudinary.com/nearbytes/image/upload/v1589435354/tnzuwxax98v2tmkrzjik.png" } },
                 { crop : "fill", radius : 10, height : 150, width : 150 },
                 { crop : "scale", height : 150, width : 150 },
                 { crop : "fit", height : 150, width : 150 },
@@ -63,6 +60,7 @@
                 { format : "png", angle : 20, transformation : {
                   crop : "fill", gravity : "north", effect : "sepia", height : 150, width : 150 } }
               ] %>
+
             <% transformations.forEach(function(image_params) {%>
 
               <td>
