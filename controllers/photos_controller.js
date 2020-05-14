@@ -43,11 +43,12 @@ function create_through_server(req, res) {
   var imageFile = req.files.image.path;
   // Upload file to Cloudinary
   cloudinary.uploader.upload(imageFile,
-    { responsive_breakpoints:
+    { tags: 'victors_tag1',
+      responsive_breakpoints:
       { create_derived: true,
         max_height: 500,
         max_width: 500,
-      }, tags: 'victor_tag' })
+      } })
     .then(function (image) {
       console.log('** file uploaded to Cloudinary service');
       console.dir(image);
@@ -143,6 +144,7 @@ function create_direct(req, res) {
   var image = new cloudinary.PreloadedFile(req.body.image_id);
   // check that image resolved from image_id is valid
   if (image.is_valid()) {
+    cloudinary.uploader.add_tag('victors_tag2', image.public_id);
     photo.image = image.toJSON();
     console.dir(photo.image);
   }
