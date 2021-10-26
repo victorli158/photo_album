@@ -19,7 +19,7 @@
     "ejs-locals": "^1.0.2",
     "express": "^4.7.2",
     "jquery": "^3.5.1",
-    "jquery-ui": "^1.12.1",
+    "jquery-ui": "^1.13.0",
     "jugglingdb": "^1.0.1",
     "jugglingdb-mongodb": "^0.1.1",
     "method-override": "^2.1.2"
